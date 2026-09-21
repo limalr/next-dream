@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEXT DREAM</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+  <a href="index.html" class="logo">
+    <span>N</span>
+    NEXT <b>DREAM</b>
+  </a>
+
+  <nav>
+    <a href="#inicio">INÍCIO</a>
+    <a href="#produtos">PRODUTOS</a>
+    <a href="#novidades">NOVIDADES</a>
+  </nav>
+
+  <div class="acoes">
+    <a href="login.html" class="entrar">ENTRAR</a>
+    <a href="admin-login.html" class="adm">🔒 ADM</a>
+    <button onclick="abrirCarrinho()">🛒 <i id="contador">0</i></button>
+  </div>
+</header>
+
+<main>
+
+<section class="hero" id="inicio">
+
+  <div class="hero-text">
+
+    <small>ESTILO • ATITUDE • MOVIMENTO</small>
+
+    <h1>
+      NEXT<br>
+      <strong>DREAM</strong>
+    </h1>
+
+    <h2>YOUR NEXT MOVE.</h2>
+
+    <p>
+      Roupas para quem não espera o próximo nível.
+      Vai atrás.
+    </p>
+
+    <a href="#produtos" class="botao">
+      COMPRAR AGORA →
+    </a>
+
+  </div>
+
+  <div class="efeito"></div>
+
+</section>
+
+
+<section class="categorias">
+
+  <button onclick="filtrar('todos')">TODOS</button>
+  <button onclick="filtrar('camisetas')">CAMISETAS</button>
+  <button onclick="filtrar('agasalhos')">AGASALHOS</button>
+  <button onclick="filtrar('calcas')">CALÇAS & SHORTS</button>
+  <button onclick="filtrar('outros')">OUTROS</button>
+
+</section>
+
+
+<section class="produtos" id="produtos">
+
+  <div class="titulo">
+    <small>NEXT DROP</small>
+    <h2>DESTAQUES</h2>
+  </div>
+
+  <div id="listaProdutos" class="lista-produtos"></div>
+
+</section>
+
+
+<section class="manifesto">
+
+  <small>NEXT DREAM</small>
+
+  <h2>
+    MAIS QUE ROUPA.<br>
+    <strong>É MOVIMENTO.</strong>
+  </h2>
+
+  <p>
+    Uma identidade criada para quem treina,
+    evolui e transforma cada passo em um novo objetivo.
+  </p>
+
+</section>
+
+</main>
+
+
+<footer>
+
+  <h2>NEXT <span>DREAM</span></h2>
+
+  <div>
+    <a href="#produtos">Produtos</a>
+    <a href="login.html">Minha conta</a>
+    <a href="admin-login.html">Acesso ADM</a>
+  </div>
+
+  <p>© 2026 NEXT DREAM</p>
+
+</footer>
+
+
+<div id="carrinho" class="carrinho">
+
+  <div class="carrinho-topo">
+    <h2>SEU CARRINHO</h2>
+    <button onclick="fecharCarrinho()">×</button>
+  </div>
+
+  <div id="itensCarrinho"></div>
+
+  <div class="total">
+    <span>TOTAL</span>
+    <strong id="total">R$ 0,00</strong>
+  </div>
+
+  <button class="finalizar" onclick="finalizar()">
+    FINALIZAR PEDIDO →
+  </button>
+
+</div>
+
+
+<div id="fundo" onclick="fecharCarrinho()"></div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
