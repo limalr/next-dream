@@ -1,26 +1,19 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>NEXT DREAM</title>
-
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <!-- =========================
-       CABEÇALHO
-  ========================= -->
-
-  <header>
+<header>
+  <div class="header-container">
 
     <a href="index.html" class="logo">
-      <span>N</span>
-      NEXT <b>DREAM</b>
+      <span>N</span>EXT <b>DREAM</b>
     </a>
 
     <nav>
@@ -29,318 +22,174 @@
       <a href="#novidades">NOVIDADES</a>
     </nav>
 
-    <div class="acoes">
-
-      <button
-        type="button"
-        class="adm"
-        onclick="abrirMensagemADM()"
-      >
-        🔒 ADM
+    <div class="header-actions">
+      <a href="login.html" class="entrar">ENTRAR</a>
+      <button class="cart-btn" onclick="abrirCarrinho()">
+        🛒 <span id="contadorCarrinho">0</span>
       </button>
-
-      <button
-        type="button"
-        onclick="abrirCarrinho()"
-        aria-label="Abrir carrinho"
-      >
-        🛒
-        <i id="contador">0</i>
-      </button>
-
     </div>
 
-  </header>
+  </div>
+</header>
 
 
-  <main>
+<main>
 
-    <!-- =========================
-         HERO
-    ========================= -->
+  <section class="hero" id="inicio">
+    <div class="hero-content">
 
-    <section class="hero" id="inicio">
-
-      <div class="hero-text">
-
-        <small>
-          ESTILO • ATITUDE • MOVIMENTO
-        </small>
-
-        <h1>
-          NEXT<br>
-          <strong>DREAM</strong>
-        </h1>
-
-        <h2>
-          YOUR NEXT MOVE.
-        </h2>
-
-        <p>
-          Roupas para quem não espera o próximo nível.
-          Vai atrás.
-        </p>
-
-        <a href="#produtos" class="botao">
-          COMPRAR AGORA →
-        </a>
-
+      <div class="hero-tag">
+        ESTILO • ATITUDE • MOVIMENTO
       </div>
 
-      <div class="efeito"></div>
-
-    </section>
-
-
-    <!-- =========================
-         CATEGORIAS
-    ========================= -->
-
-    <section class="categorias">
-
-      <button
-        type="button"
-        onclick="filtrar('todos')"
-      >
-        TODOS
-      </button>
-
-      <button
-        type="button"
-        onclick="filtrar('camisetas')"
-      >
-        CAMISETAS
-      </button>
-
-      <button
-        type="button"
-        onclick="filtrar('agasalhos')"
-      >
-        AGASALHOS
-      </button>
-
-      <button
-        type="button"
-        onclick="filtrar('calcas')"
-      >
-        CALÇAS & SHORTS
-      </button>
-
-      <button
-        type="button"
-        onclick="filtrar('outros')"
-      >
-        OUTROS
-      </button>
-
-    </section>
-
-
-    <!-- =========================
-         PRODUTOS
-    ========================= -->
-
-    <section class="produtos" id="produtos">
-
-      <div class="titulo">
-
-        <small>
-          NEXT DROP
-        </small>
-
-        <h2>
-          DESTAQUES
-        </h2>
-
-      </div>
-
-      <div
-        id="listaProdutos"
-        class="lista-produtos"
-      ></div>
-
-    </section>
-
-
-    <!-- =========================
-         MANIFESTO
-    ========================= -->
-
-    <section class="manifesto">
-
-      <small>
-        NEXT DREAM
-      </small>
+      <h1>
+        NEXT <span>DREAM</span>
+      </h1>
 
       <h2>
-        MAIS QUE ROUPA.<br>
-        <strong>É MOVIMENTO.</strong>
+        YOUR NEXT MOVE.
       </h2>
 
       <p>
-        Uma identidade criada para quem treina,
-        evolui e transforma cada passo em um novo objetivo.
+        Roupas para quem não espera o próximo nível.
+        Vai atrás.
       </p>
 
-    </section>
-
-  </main>
-
-
-  <!-- =========================
-       RODAPÉ
-  ========================= -->
-
-  <footer>
-
-    <h2>
-      NEXT <span>DREAM</span>
-    </h2>
-
-    <div>
-
-      <a href="#produtos">
-        Produtos
-      </a>
-
-      <a href="#inicio">
-        Minha conta
-      </a>
-
-      <a href="#inicio">
-        Acesso ADM
+      <a href="#produtos" class="btn-principal">
+        COMPRAR AGORA →
       </a>
 
     </div>
-
-    <p>
-      © 2026 NEXT DREAM
-    </p>
-
-  </footer>
+  </section>
 
 
-  <!-- =========================
-       CARRINHO
-  ========================= -->
+  <section class="categorias">
 
-  <div
-    id="carrinho"
-    class="carrinho"
-  >
+    <button class="ativo" onclick="filtrar('todos', this)">
+      TODOS
+    </button>
 
-    <div class="carrinho-topo">
+    <button onclick="filtrar('camisetas', this)">
+      CAMISETAS
+    </button>
 
-      <h2>
-        SEU CARRINHO
-      </h2>
+    <button onclick="filtrar('agasalhos', this)">
+      AGASALHOS
+    </button>
 
-      <button
-        type="button"
-        onclick="fecharCarrinho()"
-        aria-label="Fechar carrinho"
-      >
+    <button onclick="filtrar('calcas', this)">
+      CALÇAS & SHORTS
+    </button>
+
+    <button onclick="filtrar('outros', this)">
+      OUTROS
+    </button>
+
+  </section>
+
+
+  <section class="produtos" id="produtos">
+
+    <div class="produtos-titulo">
+      <div>
+        <span>COLEÇÃO</span>
+        <h2>DESTAQUES</h2>
+      </div>
+
+      <span id="quantidadeProdutos"></span>
+    </div>
+
+    <div id="listaProdutos"></div>
+
+  </section>
+
+
+  <section class="manifesto" id="novidades">
+
+    <small>NEXT DREAM</small>
+
+    <h2>
+      MAIS QUE ROUPA.<br>
+      É MOVIMENTO.
+    </h2>
+
+  </section>
+
+</main>
+
+
+<footer>
+
+  <div class="footer-container">
+
+    <div class="footer-logo">
+      <span>N</span>EXT DREAM
+    </div>
+
+    <div class="footer-links">
+      <a href="#inicio">INÍCIO</a>
+      <a href="#produtos">PRODUTOS</a>
+      <a href="login.html">ENTRAR</a>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    © 2026 NEXT DREAM. Todos os direitos reservados.
+  </div>
+
+</footer>
+
+
+<!-- CARRINHO -->
+
+<div class="carrinho-overlay" id="carrinho">
+
+  <div class="carrinho">
+
+    <div class="carrinho-header">
+
+      <h2>SEU CARRINHO</h2>
+
+      <button class="fechar-carrinho" onclick="fecharCarrinho()">
         ×
       </button>
 
     </div>
 
-
     <div id="itensCarrinho"></div>
 
-
-    <div class="total">
-
-      <span>
-        TOTAL
-      </span>
-
-      <strong id="total">
-        R$ 0,00
-      </strong>
-
+    <div class="carrinho-total">
+      <span>TOTAL</span>
+      <span id="total">R$ 0,00</span>
     </div>
 
-
-    <button
-      type="button"
-      class="finalizar"
-      onclick="finalizar()"
-    >
-      FINALIZAR PEDIDO →
+    <button class="btn-finalizar" onclick="finalizar()">
+      FINALIZAR COMPRA →
     </button>
 
   </div>
 
-
-  <!-- FUNDO DO CARRINHO -->
-
-  <div
-    id="fundo"
-    onclick="fecharCarrinho()"
-  ></div>
+</div>
 
 
-  <!-- =========================
-       WHATSAPP
-  ========================= -->
+<!-- WHATSAPP -->
 
-  <a
-    href="https://wa.me/5545984164185?text=Ol%C3%A1!%20Vim%20pelo%20site%20NEXT%20DREAM%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es."
-    class="whatsapp-next"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="Falar com a NEXT DREAM pelo WhatsApp"
-  >
+<a
+  href="https://wa.me/5545984164185?text=Ol%C3%A1!%20Vim%20pelo%20site%20NEXT%20DREAM%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es."
+  class="whatsapp-next"
+  target="_blank"
+  aria-label="Falar pelo WhatsApp"
+>
 
-    <svg
-      viewBox="0 0 32 32"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-    >
+  <svg viewBox="0 0 32 32">
+    <path d="M16.01 3C8.83 3 3 8.83 3 16c0 2.29.6 4.44 1.66 6.3L3 29l6.88-1.61A12.94 12.94 0 0 0 16.01 29C23.18 29 29 23.17 29 16S23.18 3 16.01 3zm0 23.7c-2.02 0-3.9-.55-5.51-1.5l-.39-.23-4.08.96.98-3.98-.25-.41A10.7 10.7 0 0 1 5.3 16c0-5.91 4.81-10.7 10.71-10.7S26.7 10.09 26.7 16s-4.8 10.7-10.69 10.7zm5.87-8.03c-.32-.16-1.91-.94-2.2-1.05-.3-.11-.51-.16-.73.16-.21.32-.83 1.05-1.02 1.27-.19.21-.38.24-.7.08-.32-.16-1.36-.5-2.59-1.6-.96-.86-1.61-1.92-1.8-2.24-.19-.32-.02-.49.14-.65.14-.14.32-.38.48-.57.16-.19.21-.32.32-.54.11-.21.05-.4-.03-.57-.08-.16-.73-1.75-1-2.39-.26-.62-.53-.54-.73-.55h-.62c-.21 0-.57.08-.86.4-.3.32-1.13 1.1-1.13 2.68s1.16 3.11 1.32 3.33c.16.21 2.28 3.48 5.53 4.88.77.33 1.37.53 1.84.68.77.25 1.47.21 2.02.13.62-.09 1.91-.78 2.18-1.54.27-.76.27-1.41.19-1.54-.08-.14-.29-.22-.62-.38z"/>
+  </svg>
 
-      <path
-        fill="#ffffff"
-        d="M16 3C8.82 3 3 8.82 3 16c0 2.3.6 4.46 1.65 6.34L3 29l6.82-1.63A12.94 12.94 0 0 0 16 29c7.18 0 13-5.82 13-13S23.18 3 16 3zm0 23.6c-2.04 0-4.03-.55-5.78-1.6l-.41-.25-4.05.97.98-3.94-.27-.42A10.57 10.57 0 1 1 16 26.6zm5.8-7.93c-.32-.16-1.9-.94-2.2-1.05-.3-.11-.52-.16-.74.16-.22.32-.84 1.05-1.03 1.27-.19.22-.38.25-.7.08-.32-.16-1.36-.5-2.59-1.59-.96-.85-1.61-1.9-1.8-2.22-.19-.32-.02-.49.14-.65.14-.14.32-.38.49-.57.16-.19.22-.32.32-.54.11-.22.05-.41-.03-.57-.08-.16-.74-1.79-1.01-2.45-.27-.65-.54-.56-.74-.57h-.63c-.22 0-.57.08-.87.41-.3.32-1.14 1.11-1.14 2.7 0 1.59 1.17 3.12 1.33 3.34.16.22 2.3 3.51 5.57 4.92.78.34 1.39.54 1.86.69.78.25 1.49.22 2.05.14.63-.09 1.9-.78 2.17-1.54.27-.76.27-1.41.19-1.54-.08-.14-.3-.22-.63-.38z"
-      />
-
-    </svg>
-
-  </a>
+</a>
 
 
-  <!-- MENSAGEM ADM -->
-
-  <div
-    id="mensagemADM"
-    class="mensagem-adm"
-  >
-
-    <div class="mensagem-adm-box">
-
-      <button
-        type="button"
-        onclick="fecharMensagemADM()"
-        class="fechar-mensagem"
-      >
-        ×
-      </button>
-
-      <strong>
-        ÁREA ADMINISTRATIVA
-      </strong>
-
-      <p>
-        A área administrativa estará disponível em uma próxima etapa.
-      </p>
-
-    </div>
-
-  </div>
-
-
-  <script src="script.js"></script>
+<script src="script.js"></script>
 
 </body>
-
 </html>
