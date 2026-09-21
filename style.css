@@ -728,3 +728,10 @@ height: 30px;
 }
 
 }
+.categorias button.ativo {
+  color: #fff;
+}
+
+.categorias button.ativo::after {
+  transform: scaleX(1);
+}
