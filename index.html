@@ -1,146 +1,1289 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NEXT DREAM</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NEXT DREAM</title>
+
+    <meta name="description" content="NEXT DREAM — Estilo, atitude e movimento.">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --black: #050505;
+            --black2: #0a0a0a;
+            --black3: #111111;
+            --green: #a6ff00;
+            --green2: #8ee600;
+            --white: #f5f5f5;
+            --gray: #999999;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--black);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            font-family: inherit;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 76px;
+            background: rgba(5,5,5,0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(166,255,0,0.08);
+            z-index: 1000;
+        }
+
+        .header-container {
+            width: 92%;
+            max-width: 1400px;
+            height: 100%;
+            margin: auto;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* LOGO */
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            font-weight: 900;
+            font-style: italic;
+            font-size: 21px;
+            letter-spacing: -1px;
+        }
+
+        .logo-icon {
+            color: var(--green);
+            font-size: 30px;
+            font-weight: 900;
+            transform: skew(-10deg);
+        }
+
+        .logo span:last-child {
+            color: var(--green);
+        }
+
+        /* MENU */
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 38px;
+        }
+
+        nav a {
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--green);
+        }
+
+        /* HEADER BUTTONS */
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .login-button {
+            border: none;
+            background: var(--green);
+            color: #000;
+            padding: 12px 20px;
+            font-size: 11px;
+            font-weight: 900;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: 0.2s;
+        }
+
+        .login-button:hover {
+            background: #c0ff4a;
+            transform: translateY(-2px);
+        }
+
+        .admin-button {
+            width: 38px;
+            height: 38px;
+            border: 1px solid #333;
+            background: #111;
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.2s;
+        }
+
+        .admin-button:hover {
+            border-color: var(--green);
+            color: var(--green);
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 100vh;
+            padding-top: 76px;
+
+            position: relative;
+            overflow: hidden;
+
+            display: flex;
+            align-items: center;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+
+            background-image:
+                linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+
+            background-size: 48px 48px;
+
+            mask-image: linear-gradient(to bottom, black, transparent);
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            width: 550px;
+            height: 550px;
+
+            right: -100px;
+            top: 130px;
+
+            background: var(--green);
+
+            opacity: 0.08;
+            filter: blur(120px);
+
+            border-radius: 50%;
+        }
+
+        .hero-container {
+            width: 92%;
+            max-width: 1400px;
+            margin: auto;
+
+            position: relative;
+            z-index: 2;
+
+            display: grid;
+            grid-template-columns: 1fr 0.8fr;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .hero-small {
+            color: var(--green);
+            font-size: 11px;
+            font-weight: 900;
+            letter-spacing: 3px;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-size: clamp(70px, 10vw, 150px);
+            line-height: 0.78;
+            letter-spacing: -8px;
+            font-weight: 950;
+            font-style: italic;
+            text-transform: uppercase;
+        }
+
+        .hero h1 .green {
+            display: block;
+            color: var(--green);
+        }
+
+        .hero-subtitle {
+            margin-top: 25px;
+
+            font-size: 11px;
+            font-weight: 900;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+        }
+
+        .hero-description {
+            margin-top: 18px;
+
+            max-width: 420px;
+
+            color: #aaa;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .hero-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+
+            margin-top: 30px;
+
+            background: var(--green);
+            color: #000;
+
+            padding: 17px 25px;
+
+            border: none;
+
+            font-size: 11px;
+            font-weight: 900;
+
+            text-transform: uppercase;
+
+            cursor: pointer;
+
+            transition: 0.25s;
+        }
+
+        .hero-button:hover {
+            background: #c0ff4a;
+            transform: translateX(5px);
+        }
+
+        /* HERO GRAPHIC */
+
+        .hero-graphic {
+            min-height: 500px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            position: relative;
+        }
+
+        .diamond {
+            width: 340px;
+            height: 340px;
+
+            border: 2px solid rgba(166,255,0,0.55);
+
+            transform: rotate(45deg);
+
+            position: relative;
+
+            box-shadow:
+                0 0 60px rgba(166,255,0,0.05),
+                inset 0 0 60px rgba(166,255,0,0.03);
+        }
+
+        .diamond::before {
+            content: "";
+
+            position: absolute;
+
+            inset: 45px;
+
+            border: 1px solid rgba(166,255,0,0.18);
+        }
+
+        .diamond::after {
+            content: "ND";
+
+            position: absolute;
+
+            top: 50%;
+            left: 50%;
+
+            transform: translate(-50%,-50%) rotate(-45deg);
+
+            font-size: 80px;
+            font-weight: 950;
+            font-style: italic;
+
+            color: rgba(166,255,0,0.15);
+        }
+
+        /* =========================
+           PRODUCTS
+        ========================= */
+
+        .products-section {
+            padding: 120px 0;
+            background: #070707;
+        }
+
+        .section-container {
+            width: 92%;
+            max-width: 1400px;
+            margin: auto;
+        }
+
+        .section-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            margin-bottom: 45px;
+        }
+
+        .section-label {
+            color: var(--green);
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: clamp(40px, 6vw, 80px);
+            line-height: 0.9;
+            font-style: italic;
+            font-weight: 950;
+            text-transform: uppercase;
+            letter-spacing: -3px;
+        }
+
+        .section-info {
+            color: #777;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* PRODUCTS GRID */
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .product {
+            background: #0d0d0d;
+            border: 1px solid #181818;
+            transition: 0.25s;
+            overflow: hidden;
+        }
+
+        .product:hover {
+            border-color: rgba(166,255,0,0.5);
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            height: 400px;
+
+            background:
+                linear-gradient(135deg, #151515, #090909);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            position: relative;
+        }
+
+        .product-image span {
+            font-size: 65px;
+            font-weight: 950;
+            font-style: italic;
+            color: #202020;
+        }
+
+        .product-tag {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+
+            background: var(--green);
+            color: #000;
+
+            padding: 7px 10px;
+
+            font-size: 9px;
+            font-weight: 900;
+
+            text-transform: uppercase;
+        }
+
+        .product-info {
+            padding: 22px;
+        }
+
+        .product-name {
+            font-size: 17px;
+            font-weight: 900;
+            text-transform: uppercase;
+            font-style: italic;
+        }
+
+        .product-description {
+            color: #777;
+            font-size: 11px;
+            margin-top: 7px;
+        }
+
+        .product-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            margin-top: 20px;
+        }
+
+        .product-price {
+            color: var(--green);
+            font-size: 18px;
+            font-weight: 900;
+        }
+
+        .product-button {
+            border: 1px solid #333;
+            background: transparent;
+            color: white;
+
+            padding: 10px 13px;
+
+            font-size: 9px;
+            font-weight: 900;
+
+            cursor: pointer;
+
+            text-transform: uppercase;
+
+            transition: 0.2s;
+        }
+
+        .product-button:hover {
+            background: var(--green);
+            border-color: var(--green);
+            color: #000;
+        }
+
+        /* =========================
+           WHATSAPP
+        ========================= */
+
+        .whatsapp-button {
+            position: fixed;
+
+            right: 22px;
+            bottom: 22px;
+
+            z-index: 2000;
+
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            background: var(--green);
+            color: #000;
+
+            padding: 14px 18px;
+
+            font-size: 10px;
+            font-weight: 900;
+
+            text-transform: uppercase;
+
+            box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+
+            transition: 0.25s;
+        }
+
+        .whatsapp-button:hover {
+            transform: translateY(-4px);
+            background: #c0ff4a;
+        }
+
+        .whatsapp-icon {
+            font-size: 18px;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            border-top: 1px solid #181818;
+            padding: 45px 0;
+            background: #050505;
+        }
+
+        .footer-container {
+            width: 92%;
+            max-width: 1400px;
+            margin: auto;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-weight: 950;
+            font-style: italic;
+            font-size: 20px;
+        }
+
+        .footer-logo span {
+            color: var(--green);
+        }
+
+        .footer-text {
+            color: #555;
+            font-size: 10px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* =========================
+           LOGIN MODAL
+        ========================= */
+
+        .modal {
+            position: fixed;
+
+            inset: 0;
+
+            background: rgba(0,0,0,0.82);
+
+            backdrop-filter: blur(8px);
+
+            z-index: 3000;
+
+            display: none;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 20px;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .login-box {
+            width: 100%;
+            max-width: 420px;
+
+            background: #0c0c0c;
+
+            border: 1px solid #252525;
+
+            padding: 38px;
+
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+
+            top: 15px;
+            right: 18px;
+
+            background: none;
+            border: none;
+
+            color: #777;
+
+            font-size: 22px;
+
+            cursor: pointer;
+        }
+
+        .close-modal:hover {
+            color: var(--green);
+        }
+
+        .login-title {
+            font-size: 35px;
+            font-weight: 950;
+            font-style: italic;
+            text-transform: uppercase;
+        }
+
+        .login-title span {
+            color: var(--green);
+        }
+
+        .login-subtitle {
+            color: #666;
+            font-size: 11px;
+            margin-top: 8px;
+            margin-bottom: 30px;
+        }
+
+        .login-box input {
+            width: 100%;
+
+            background: #050505;
+
+            border: 1px solid #252525;
+
+            color: white;
+
+            padding: 15px;
+
+            margin-bottom: 12px;
+
+            outline: none;
+
+            font-size: 13px;
+        }
+
+        .login-box input:focus {
+            border-color: var(--green);
+        }
+
+        .login-submit {
+            width: 100%;
+
+            padding: 16px;
+
+            background: var(--green);
+
+            border: none;
+
+            color: #000;
+
+            font-weight: 900;
+
+            text-transform: uppercase;
+
+            cursor: pointer;
+
+            margin-top: 5px;
+        }
+
+        .login-submit:hover {
+            background: #c0ff4a;
+        }
+
+        .admin-login {
+            margin-top: 15px;
+
+            width: 100%;
+
+            padding: 13px;
+
+            background: transparent;
+
+            border: 1px solid #333;
+
+            color: #aaa;
+
+            cursor: pointer;
+
+            font-size: 10px;
+
+            font-weight: 900;
+
+            text-transform: uppercase;
+        }
+
+        .admin-login:hover {
+            color: var(--green);
+            border-color: var(--green);
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            nav {
+                display: none;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                min-height: auto;
+                padding-top: 140px;
+                padding-bottom: 80px;
+            }
+
+            .hero-graphic {
+                min-height: 320px;
+            }
+
+            .diamond {
+                width: 230px;
+                height: 230px;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .product-image {
+                height: 320px;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .header-container {
+                width: 90%;
+            }
+
+            .logo {
+                font-size: 17px;
+            }
+
+            .header-actions {
+                gap: 5px;
+            }
+
+            .login-button {
+                padding: 10px 12px;
+                font-size: 9px;
+            }
+
+            .admin-button {
+                width: 34px;
+                height: 34px;
+            }
+
+            .hero h1 {
+                font-size: 65px;
+                letter-spacing: -5px;
+            }
+
+            .hero-graphic {
+                min-height: 250px;
+            }
+
+            .diamond {
+                width: 190px;
+                height: 190px;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .product-image {
+                height: 380px;
+            }
+
+            .section-top {
+                display: block;
+            }
+
+            .section-info {
+                margin-top: 20px;
+            }
+
+            .whatsapp-button {
+                right: 15px;
+                bottom: 15px;
+                padding: 13px 15px;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+        }
+
+    </style>
 </head>
 
 <body>
 
-<header>
-  <a href="index.html" class="logo">
-    <span>N</span>
-    NEXT <b>DREAM</b>
-  </a>
+    <!-- =========================
+         HEADER
+    ========================= -->
 
-  <nav>
-    <a href="#inicio">INÍCIO</a>
-    <a href="#produtos">PRODUTOS</a>
-    <a href="#novidades">NOVIDADES</a>
-  </nav>
+    <header>
 
-  <div class="acoes">
-    <a href="login.html" class="entrar">ENTRAR</a>
-    <a href="admin-login.html" class="adm">🔒 ADM</a>
-    <button onclick="abrirCarrinho()">🛒 <i id="contador">0</i></button>
-  </div>
-</header>
+        <div class="header-container">
 
-<main>
+            <a href="#" class="logo">
+                <span class="logo-icon">N</span>
+                <span>NEXT <span>DREAM</span></span>
+            </a>
 
-<section class="hero" id="inicio">
+            <nav>
+                <a href="#inicio">Início</a>
+                <a href="#produtos">Camisetas</a>
+                <a href="#produtos">Novidades</a>
+            </nav>
 
-  <div class="hero-text">
+            <div class="header-actions">
 
-    <small>ESTILO • ATITUDE • MOVIMENTO</small>
+                <button class="login-button" onclick="abrirLogin()">
+                    Entrar
+                </button>
 
-    <h1>
-      NEXT<br>
-      <strong>DREAM</strong>
-    </h1>
+                <button class="admin-button" onclick="abrirLogin()">
+                    ⚙
+                </button>
 
-    <h2>YOUR NEXT MOVE.</h2>
+            </div>
 
-    <p>
-      Roupas para quem não espera o próximo nível.
-      Vai atrás.
-    </p>
+        </div>
 
-    <a href="#produtos" class="botao">
-      COMPRAR AGORA →
+    </header>
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <main>
+
+        <section class="hero" id="inicio">
+
+            <div class="hero-container">
+
+                <div>
+
+                    <div class="hero-small">
+                        Estilo • Atitude • Movimento
+                    </div>
+
+                    <h1>
+                        NEXT
+                        <span class="green">DREAM</span>
+                    </h1>
+
+                    <div class="hero-subtitle">
+                        YOUR NEXT MOVE.
+                    </div>
+
+                    <p class="hero-description">
+                        Roupas para quem não espera o próximo nível.
+                        Vai atrás.
+                    </p>
+
+                    <a href="#produtos" class="hero-button">
+                        Comprar agora →
+                    </a>
+
+                </div>
+
+
+                <div class="hero-graphic">
+
+                    <div class="diamond"></div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             PRODUTOS
+        ========================= -->
+
+        <section class="products-section" id="produtos">
+
+            <div class="section-container">
+
+                <div class="section-top">
+
+                    <div>
+
+                        <div class="section-label">
+                            NEXT DROP
+                        </div>
+
+                        <h2 class="section-title">
+                            Camisetas
+                        </h2>
+
+                    </div>
+
+                    <div class="section-info">
+                        Coleção atual
+                    </div>
+
+                </div>
+
+
+                <div class="products-grid">
+
+
+                    <!-- PRODUTO 1 -->
+
+                    <article class="product">
+
+                        <div class="product-image">
+
+                            <div class="product-tag">
+                                Nova
+                            </div>
+
+                            <span>
+                                ND
+                            </span>
+
+                        </div>
+
+                        <div class="product-info">
+
+                            <div class="product-name">
+                                Dream Black
+                            </div>
+
+                            <div class="product-description">
+                                Camiseta NEXT DREAM
+                            </div>
+
+                            <div class="product-bottom">
+
+                                <div class="product-price">
+                                    R$ 00,00
+                                </div>
+
+                                <button
+                                    class="product-button"
+                                    onclick="pedirWhatsApp('Dream Black')"
+                                >
+                                    Pedir
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- PRODUTO 2 -->
+
+                    <article class="product">
+
+                        <div class="product-image">
+
+                            <div class="product-tag">
+                                Destaque
+                            </div>
+
+                            <span>
+                                ND
+                            </span>
+
+                        </div>
+
+                        <div class="product-info">
+
+                            <div class="product-name">
+                                Next Move
+                            </div>
+
+                            <div class="product-description">
+                                Camiseta NEXT DREAM
+                            </div>
+
+                            <div class="product-bottom">
+
+                                <div class="product-price">
+                                    R$ 00,00
+                                </div>
+
+                                <button
+                                    class="product-button"
+                                    onclick="pedirWhatsApp('Next Move')"
+                                >
+                                    Pedir
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- PRODUTO 3 -->
+
+                    <article class="product">
+
+                        <div class="product-image">
+
+                            <div class="product-tag">
+                                New
+                            </div>
+
+                            <span>
+                                ND
+                            </span>
+
+                        </div>
+
+                        <div class="product-info">
+
+                            <div class="product-name">
+                                Dream Green
+                            </div>
+
+                            <div class="product-description">
+                                Camiseta NEXT DREAM
+                            </div>
+
+                            <div class="product-bottom">
+
+                                <div class="product-price">
+                                    R$ 00,00
+                                </div>
+
+                                <button
+                                    class="product-button"
+                                    onclick="pedirWhatsApp('Dream Green')"
+                                >
+                                    Pedir
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         WHATSAPP
+    ========================= -->
+
+    <a
+        class="whatsapp-button"
+        href="https://wa.me/5545984164185?text=Olá!%20Quero%20fazer%20um%20pedido%20na%20NEXT%20DREAM."
+        target="_blank"
+    >
+
+        <span class="whatsapp-icon">◉</span>
+
+        Pedir pelo WhatsApp
+
     </a>
 
-  </div>
 
-  <div class="efeito"></div>
+    <!-- =========================
+         FOOTER
+    ========================= -->
 
-</section>
+    <footer>
 
+        <div class="footer-container">
 
-<section class="categorias">
+            <div class="footer-logo">
+                NEXT <span>DREAM</span>
+            </div>
 
-  <button onclick="filtrar('todos')">TODOS</button>
-  <button onclick="filtrar('camisetas')">CAMISETAS</button>
-  <button onclick="filtrar('agasalhos')">AGASALHOS</button>
-  <button onclick="filtrar('calcas')">CALÇAS & SHORTS</button>
-  <button onclick="filtrar('outros')">OUTROS</button>
+            <div class="footer-text">
+                Estilo • Atitude • Movimento
+            </div>
 
-</section>
+        </div>
 
-
-<section class="produtos" id="produtos">
-
-  <div class="titulo">
-    <small>NEXT DROP</small>
-    <h2>DESTAQUES</h2>
-  </div>
-
-  <div id="listaProdutos" class="lista-produtos"></div>
-
-</section>
+    </footer>
 
 
-<section class="manifesto">
+    <!-- =========================
+         LOGIN
+    ========================= -->
 
-  <small>NEXT DREAM</small>
+    <div class="modal" id="loginModal">
 
-  <h2>
-    MAIS QUE ROUPA.<br>
-    <strong>É MOVIMENTO.</strong>
-  </h2>
+        <div class="login-box">
 
-  <p>
-    Uma identidade criada para quem treina,
-    evolui e transforma cada passo em um novo objetivo.
-  </p>
+            <button
+                class="close-modal"
+                onclick="fecharLogin()"
+            >
+                ×
+            </button>
 
-</section>
+            <div class="login-title">
+                NEXT <span>DREAM</span>
+            </div>
 
-</main>
+            <div class="login-subtitle">
+                Acesse sua conta
+            </div>
 
+            <input
+                type="email"
+                placeholder="Seu e-mail"
+                id="loginEmail"
+            >
 
-<footer>
+            <input
+                type="password"
+                placeholder="Sua senha"
+                id="loginPassword"
+            >
 
-  <h2>NEXT <span>DREAM</span></h2>
+            <button
+                class="login-submit"
+                onclick="loginCliente()"
+            >
+                Entrar
+            </button>
 
-  <div>
-    <a href="#produtos">Produtos</a>
-    <a href="login.html">Minha conta</a>
-    <a href="admin-login.html">Acesso ADM</a>
-  </div>
+            <button
+                class="admin-login"
+                onclick="loginAdmin()"
+            >
+                Acesso administrativo
+            </button>
 
-  <p>© 2026 NEXT DREAM</p>
+        </div>
 
-</footer>
-
-
-<div id="carrinho" class="carrinho">
-
-  <div class="carrinho-topo">
-    <h2>SEU CARRINHO</h2>
-    <button onclick="fecharCarrinho()">×</button>
-  </div>
-
-  <div id="itensCarrinho"></div>
-
-  <div class="total">
-    <span>TOTAL</span>
-    <strong id="total">R$ 0,00</strong>
-  </div>
-
-  <button class="finalizar" onclick="finalizar()">
-    FINALIZAR PEDIDO →
-  </button>
-
-</div>
-
-
-<div id="fundo" onclick="fecharCarrinho()"></div>
+    </div>
 
 
-<script src="script.js"></script>
+    <script>
+
+        /* =========================
+           WHATSAPP
+        ========================= */
+
+        function pedirWhatsApp(produto) {
+
+            const telefone = "5545984164185";
+
+            const mensagem =
+                "Olá! Quero fazer um pedido na NEXT DREAM.%0A%0A" +
+                "Produto: " + produto;
+
+            window.open(
+                "https://wa.me/" + telefone + "?text=" + mensagem,
+                "_blank"
+            );
+        }
+
+
+        /* =========================
+           LOGIN
+        ========================= */
+
+        function abrirLogin() {
+
+            document
+                .getElementById("loginModal")
+                .classList
+                .add("active");
+
+        }
+
+
+        function fecharLogin() {
+
+            document
+                .getElementById("loginModal")
+                .classList
+                .remove("active");
+
+        }
+
+
+        function loginCliente() {
+
+            const email =
+                document.getElementById("loginEmail").value;
+
+            const senha =
+                document.getElementById("loginPassword").value;
+
+            if (!email || !senha) {
+
+                alert("Digite seu e-mail e sua senha.");
+
+                return;
+            }
+
+            alert(
+                "O sistema de login será conectado ao banco de dados na próxima etapa."
+            );
+
+        }
+
+
+        function loginAdmin() {
+
+            alert(
+                "A área administrativa será configurada na próxima etapa."
+            );
+
+        }
+
+
+        /* =========================
+           FECHAR MODAL CLICANDO FORA
+        ========================= */
+
+        document
+            .getElementById("loginModal")
+            .addEventListener("click", function(event) {
+
+                if (event.target === this) {
+                    fecharLogin();
+                }
+
+            });
+
+    </script>
 
 </body>
 </html>
