@@ -46,7 +46,6 @@
             font-family: inherit;
         }
 
-
         /* =========================
            HEADER
         ========================= */
@@ -77,7 +76,6 @@
             justify-content: space-between;
         }
 
-
         /* LOGO */
 
         .logo {
@@ -103,7 +101,6 @@
             color: var(--green);
         }
 
-
         /* MENU */
 
         nav {
@@ -124,7 +121,6 @@
         nav a:hover {
             color: var(--green);
         }
-
 
         /* HEADER BUTTONS */
 
@@ -177,7 +173,6 @@
             border-color: var(--green);
             color: var(--green);
         }
-
 
         /* =========================
            HERO
@@ -263,7 +258,6 @@
 
             gap: 40px;
         }
-
 
         /* HERO TEXT */
 
@@ -357,7 +351,6 @@
             transform: translateX(5px);
         }
 
-
         /* =========================
            LOGO DENTRO DO ESPAÇO DIREITO
         ========================= */
@@ -400,7 +393,6 @@
                     rgba(166,255,0,0.18)
                 );
         }
-
 
         /* =========================
            PRODUTOS
@@ -467,7 +459,6 @@
             letter-spacing: 1px;
         }
 
-
         /* PRODUCTS GRID */
 
         .products-grid {
@@ -514,6 +505,13 @@
             position: relative;
         }
 
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
         .product-image span {
             font-size: 65px;
 
@@ -541,6 +539,8 @@
             font-weight: 900;
 
             text-transform: uppercase;
+
+            z-index: 2;
         }
 
         .product-info {
@@ -611,7 +611,6 @@
             color: #000;
         }
 
-
         /* =========================
            WHATSAPP
         ========================= */
@@ -659,7 +658,6 @@
             font-size: 18px;
         }
 
-
         /* =========================
            FOOTER
         ========================= */
@@ -706,7 +704,6 @@
 
             text-transform: uppercase;
         }
-
 
         /* =========================
            LOGIN MODAL
@@ -870,7 +867,6 @@
             border-color: var(--green);
         }
 
-
         /* =========================
            MOBILE
         ========================= */
@@ -911,7 +907,6 @@
                 height: 320px;
             }
         }
-
 
         @media (max-width: 600px) {
 
@@ -988,9 +983,7 @@
     </style>
 </head>
 
-
 <body>
-
 
     <!-- =========================
          HEADER
@@ -1013,7 +1006,6 @@
 
             </a>
 
-
             <nav>
 
                 <a href="#inicio">
@@ -1030,7 +1022,6 @@
 
             </nav>
 
-
             <div class="header-actions">
 
                 <button
@@ -1039,7 +1030,6 @@
                 >
                     Entrar
                 </button>
-
 
                 <button
                     class="admin-button"
@@ -1054,8 +1044,6 @@
 
     </header>
 
-
-
     <!-- =========================
          HERO
     ========================= -->
@@ -1069,13 +1057,11 @@
 
             <div class="hero-container">
 
-
                 <div>
 
                     <div class="hero-small">
                         Estilo • Atitude • Movimento
                     </div>
-
 
                     <h1>
 
@@ -1087,11 +1073,9 @@
 
                     </h1>
 
-
                     <div class="hero-subtitle">
                         YOUR NEXT MOVE.
                     </div>
-
 
                     <p class="hero-description">
 
@@ -1101,7 +1085,6 @@
 
                     </p>
 
-
                     <a
                         href="#produtos"
                         class="hero-button"
@@ -1110,12 +1093,6 @@
                     </a>
 
                 </div>
-
-
-
-                <!-- =========================
-                     NOSSA LOGO
-                ========================= -->
 
                 <div class="hero-graphic">
 
@@ -1127,12 +1104,9 @@
 
                 </div>
 
-
             </div>
 
         </section>
-
-
 
         <!-- =========================
              PRODUTOS
@@ -1144,7 +1118,6 @@
         >
 
             <div class="section-container">
-
 
                 <div class="section-top">
 
@@ -1160,19 +1133,18 @@
 
                     </div>
 
-
                     <div class="section-info">
                         Coleção atual
                     </div>
 
                 </div>
 
+                <div
+                    class="products-grid"
+                    id="productsGrid"
+                >
 
-
-                <div class="products-grid">
-
-
-                    <!-- PRODUTO 1 -->
+                    <!-- Produtos do Supabase serão carregados aqui -->
 
                     <article class="product">
 
@@ -1188,7 +1160,6 @@
 
                         </div>
 
-
                         <div class="product-info">
 
                             <div class="product-name">
@@ -1199,13 +1170,11 @@
                                 Camiseta NEXT DREAM
                             </div>
 
-
                             <div class="product-bottom">
 
                                 <div class="product-price">
                                     R$ 00,00
                                 </div>
-
 
                                 <button
                                     class="product-button"
@@ -1219,10 +1188,6 @@
                         </div>
 
                     </article>
-
-
-
-                    <!-- PRODUTO 2 -->
 
                     <article class="product">
 
@@ -1238,7 +1203,6 @@
 
                         </div>
 
-
                         <div class="product-info">
 
                             <div class="product-name">
@@ -1249,13 +1213,11 @@
                                 Camiseta NEXT DREAM
                             </div>
 
-
                             <div class="product-bottom">
 
                                 <div class="product-price">
                                     R$ 00,00
                                 </div>
-
 
                                 <button
                                     class="product-button"
@@ -1269,10 +1231,6 @@
                         </div>
 
                     </article>
-
-
-
-                    <!-- PRODUTO 3 -->
 
                     <article class="product">
 
@@ -1288,7 +1246,6 @@
 
                         </div>
 
-
                         <div class="product-info">
 
                             <div class="product-name">
@@ -1299,13 +1256,11 @@
                                 Camiseta NEXT DREAM
                             </div>
 
-
                             <div class="product-bottom">
 
                                 <div class="product-price">
                                     R$ 00,00
                                 </div>
-
 
                                 <button
                                     class="product-button"
@@ -1320,7 +1275,6 @@
 
                     </article>
 
-
                 </div>
 
             </div>
@@ -1329,15 +1283,13 @@
 
     </main>
 
-
-
     <!-- =========================
          WHATSAPP
     ========================= -->
 
     <a
         class="whatsapp-button"
-        href="https://wa.me/5545984164185?text=Olá!%20Quero%20fazer%20um%20pedido%20na%20NEXT%20DREAM."
+        href="https://wa.me/5545984164185?text=Ol%C3%A1!%20Quero%20fazer%20um%20pedido%20na%20NEXT%20DREAM."
         target="_blank"
     >
 
@@ -1348,8 +1300,6 @@
         Pedir pelo WhatsApp
 
     </a>
-
-
 
     <!-- =========================
          FOOTER
@@ -1364,7 +1314,6 @@
                 <span>DREAM</span>
             </div>
 
-
             <div class="footer-text">
                 Estilo • Atitude • Movimento
             </div>
@@ -1372,8 +1321,6 @@
         </div>
 
     </footer>
-
-
 
     <!-- =========================
          LOGIN
@@ -1386,14 +1333,12 @@
 
         <div class="login-box">
 
-
             <button
                 class="close-modal"
                 onclick="fecharLogin()"
             >
                 ×
             </button>
-
 
             <div class="login-title">
 
@@ -1402,11 +1347,9 @@
 
             </div>
 
-
             <div class="login-subtitle">
                 Acesse sua conta
             </div>
-
 
             <input
                 type="email"
@@ -1414,13 +1357,11 @@
                 id="loginEmail"
             >
 
-
             <input
                 type="password"
                 placeholder="Sua senha"
                 id="loginPassword"
             >
-
 
             <button
                 class="login-submit"
@@ -1428,7 +1369,6 @@
             >
                 Entrar
             </button>
-
 
             <button
                 class="admin-login"
@@ -1441,9 +1381,29 @@
 
     </div>
 
+    <!-- =========================
+         SUPABASE
+    ========================= -->
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
     <script>
+
+        /* =========================
+           SUPABASE
+        ========================= */
+
+        const SUPABASE_URL =
+            "https://svwxrvcitrzfjmyixrrb.supabase.co";
+
+        const SUPABASE_KEY =
+            "sb_publishable_FSh5W1vkGQkvtDUjVZawjg_X5VSlCU1";
+
+        const supabaseClient =
+            window.supabase.createClient(
+                SUPABASE_URL,
+                SUPABASE_KEY
+            );
 
 
         /* =========================
@@ -1456,25 +1416,23 @@
                 "5545984164185";
 
             const mensagem =
-                "Olá! Quero fazer um pedido na NEXT DREAM.%0A%0A" +
+                "Olá! Quero fazer um pedido na NEXT DREAM.\n\n" +
                 "Produto: " +
                 produto;
-
 
             window.open(
                 "https://wa.me/" +
                 telefone +
                 "?text=" +
-                mensagem,
+                encodeURIComponent(mensagem),
                 "_blank"
             );
 
         }
 
 
-
         /* =========================
-           LOGIN
+           LOGIN MODAL
         ========================= */
 
         function abrirLogin() {
@@ -1497,19 +1455,22 @@
         }
 
 
-        function loginCliente() {
+        /* =========================
+           LOGIN NORMAL
+        ========================= */
+
+        async function loginCliente() {
 
             const email =
                 document
                 .getElementById("loginEmail")
-                .value;
-
+                .value
+                .trim();
 
             const senha =
                 document
                 .getElementById("loginPassword")
                 .value;
-
 
             if (!email || !senha) {
 
@@ -1520,27 +1481,241 @@
                 return;
             }
 
+            const { data, error } =
+                await supabaseClient.auth.signInWithPassword({
+                    email: email,
+                    password: senha
+                });
+
+            if (error) {
+
+                alert(
+                    "E-mail ou senha incorretos."
+                );
+
+                console.error(error);
+
+                return;
+            }
 
             alert(
-                "O sistema de login será conectado ao banco de dados na próxima etapa."
+                "Login realizado com sucesso!"
             );
 
-        }
-
-
-
-        function loginAdmin() {
-
-            alert(
-                "A área administrativa será configurada na próxima etapa."
-            );
+            fecharLogin();
 
         }
-
 
 
         /* =========================
-           FECHAR LOGIN
+           LOGIN ADMINISTRATIVO
+        ========================= */
+
+        async function loginAdmin() {
+
+            const email =
+                document
+                .getElementById("loginEmail")
+                .value
+                .trim();
+
+            const senha =
+                document
+                .getElementById("loginPassword")
+                .value;
+
+            if (!email || !senha) {
+
+                alert(
+                    "Digite o e-mail e a senha do administrador."
+                );
+
+                return;
+            }
+
+            const { data, error } =
+                await supabaseClient.auth.signInWithPassword({
+                    email: email,
+                    password: senha
+                });
+
+            if (error) {
+
+                alert(
+                    "E-mail ou senha incorretos."
+                );
+
+                console.error(error);
+
+                return;
+            }
+
+            if (!data.user) {
+
+                alert(
+                    "Não foi possível identificar o usuário."
+                );
+
+                return;
+            }
+
+            const emailAdministrador =
+                data.user.email;
+
+            /*
+             * O mesmo e-mail usado nas políticas
+             * do Supabase deve ser o administrador.
+             */
+
+            if (!emailAdministrador) {
+
+                await supabaseClient.auth.signOut();
+
+                alert(
+                    "Usuário administrativo não identificado."
+                );
+
+                return;
+            }
+
+            /*
+             * O acesso ao admin.html também será
+             * protegido pelo próprio Supabase.
+             */
+
+            window.location.href =
+                "admin.html";
+
+        }
+
+
+        /* =========================
+           CARREGAR PRODUTOS
+        ========================= */
+
+        async function carregarProdutos() {
+
+            const grid =
+                document.getElementById(
+                    "productsGrid"
+                );
+
+            const { data, error } =
+                await supabaseClient
+                .from("products")
+                .select("*")
+                .order("created_at", {
+                    ascending: false
+                });
+
+            if (error) {
+
+                console.error(
+                    "Erro ao carregar produtos:",
+                    error
+                );
+
+                return;
+
+            }
+
+            /*
+             * Se ainda não houver produtos
+             * cadastrados no painel, mantemos
+             * os produtos de demonstração.
+             */
+
+            if (!data || data.length === 0) {
+                return;
+            }
+
+            grid.innerHTML = "";
+
+            data.forEach(produto => {
+
+                const article =
+                    document.createElement("article");
+
+                article.className =
+                    "product";
+
+                const tag =
+                    produto.is_new
+                    ? "Nova"
+                    : "Produto";
+
+                const imagem =
+                    produto.image_url
+                    ? `
+                        <img
+                            src="${produto.image_url}"
+                            alt="${produto.name}"
+                        >
+                    `
+                    : `
+                        <span>ND</span>
+                    `;
+
+                const preco =
+                    Number(produto.price || 0)
+                    .toLocaleString(
+                        "pt-BR",
+                        {
+                            style: "currency",
+                            currency: "BRL"
+                        }
+                    );
+
+                article.innerHTML = `
+
+                    <div class="product-image">
+
+                        <div class="product-tag">
+                            ${tag}
+                        </div>
+
+                        ${imagem}
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <div class="product-name">
+                            ${produto.name || ""}
+                        </div>
+
+                        <div class="product-description">
+                            ${produto.category || "Camiseta NEXT DREAM"}
+                        </div>
+
+                        <div class="product-bottom">
+
+                            <div class="product-price">
+                                ${preco}
+                            </div>
+
+                            <button
+                                class="product-button"
+                                onclick="pedirWhatsApp('${String(produto.name || "").replace(/'/g, "\\'")}')"
+                            >
+                                Pedir
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                `;
+
+                grid.appendChild(article);
+
+            });
+
+        }
+
+
+        /* =========================
+           FECHAR LOGIN CLICANDO FORA
         ========================= */
 
         document
@@ -1560,8 +1735,36 @@
                 }
             );
 
-    </script>
 
+        /* =========================
+           ENTER NO LOGIN
+        ========================= */
+
+        document
+            .getElementById("loginPassword")
+            .addEventListener(
+                "keydown",
+                function(event) {
+
+                    if (
+                        event.key === "Enter"
+                    ) {
+
+                        loginAdmin();
+
+                    }
+
+                }
+            );
+
+
+        /* =========================
+           INICIAR
+        ========================= */
+
+        carregarProdutos();
+
+    </script>
 
 </body>
 </html>
