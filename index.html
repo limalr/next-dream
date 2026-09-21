@@ -23,6 +23,10 @@
 <body>
 
 
+<!-- =========================
+     CABEÇALHO
+========================= -->
+
 <header>
 
   <a
@@ -39,11 +43,17 @@
 
   <nav>
 
-    <a href="#inicio">INÍCIO</a>
+    <a href="#inicio">
+      INÍCIO
+    </a>
 
-    <a href="#produtos">PRODUTOS</a>
+    <a href="#produtos">
+      PRODUTOS
+    </a>
 
-    <a href="#novidades">NOVIDADES</a>
+    <a href="#novidades">
+      NOVIDADES
+    </a>
 
   </nav>
 
@@ -70,7 +80,9 @@
 
       🛒
 
-      <i id="contador">0</i>
+      <i id="contador">
+        0
+      </i>
 
     </button>
 
@@ -82,6 +94,10 @@
 
 <main>
 
+
+<!-- =========================
+     HERO
+========================= -->
 
 <section
   class="hero"
@@ -99,7 +115,9 @@
 
       NEXT<br>
 
-      <strong>DREAM</strong>
+      <strong>
+        DREAM
+      </strong>
 
     </h1>
 
@@ -110,8 +128,10 @@
 
 
     <p>
+
       Roupas para quem não espera o próximo nível.
       Vai atrás.
+
     </p>
 
 
@@ -119,7 +139,9 @@
       href="#produtos"
       class="botao"
     >
+
       COMPRAR AGORA →
+
     </a>
 
   </div>
@@ -130,6 +152,10 @@
 </section>
 
 
+
+<!-- =========================
+     CATEGORIAS
+========================= -->
 
 <section class="categorias">
 
@@ -156,6 +182,10 @@
 </section>
 
 
+
+<!-- =========================
+     PRODUTOS
+========================= -->
 
 <section
   class="produtos"
@@ -184,6 +214,10 @@
 
 
 
+<!-- =========================
+     MANIFESTO
+========================= -->
+
 <section class="manifesto">
 
   <small>
@@ -195,7 +229,9 @@
 
     MAIS QUE ROUPA.<br>
 
-    <strong>É MOVIMENTO.</strong>
+    <strong>
+      É MOVIMENTO.
+    </strong>
 
   </h2>
 
@@ -214,10 +250,16 @@
 
 
 
+<!-- =========================
+     RODAPÉ
+========================= -->
+
 <footer>
 
   <h2>
+
     NEXT <span>DREAM</span>
+
   </h2>
 
 
@@ -246,7 +288,9 @@
 
 
 
-<!-- CARRINHO -->
+<!-- =========================
+     CARRINHO
+========================= -->
 
 <div
   id="carrinho"
@@ -287,12 +331,16 @@
     class="finalizar"
     onclick="finalizar()"
   >
+
     FINALIZAR PEDIDO →
+
   </button>
 
 </div>
 
 
+
+<!-- FUNDO DO CARRINHO -->
 
 <div
   id="fundo"
@@ -302,7 +350,7 @@
 
 
 <!-- =========================
-     CHAT DO SITE
+     CHAT
 ========================= -->
 
 <button
@@ -409,6 +457,7 @@
 
   </div>
 
+
 </div>
 
 
@@ -421,39 +470,29 @@
   href="https://wa.me/5545984164185?text=Ol%C3%A1!%20Vim%20pelo%20site%20NEXT%20DREAM%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es."
   class="whatsapp"
   target="_blank"
-  rel="noopener noreferrer"
-  aria-label="Falar com a NEXT DREAM pelo WhatsApp"
+  aria-label="Falar pelo WhatsApp"
 >
 
-
-  <!-- ÍCONE WHATSAPP -->
-
-  <svg
-    viewBox="0 0 32 32"
-    aria-hidden="true"
-  >
-
-    <path
-      fill="white"
-      d="M19.11 17.21c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.14-1.12-.41-2.13-1.31-.79-.7-1.32-1.56-1.47-1.83-.16-.27-.02-.42.12-.56.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.47-.84-2.01-.22-.53-.45-.46-.61-.47-.16-.01-.34-.01-.52-.01-.18 0-.48.07-.73.34-.25.27-.95.93-.95 2.27 0 1.34.98 2.62 1.11 2.8.14.18 1.92 2.93 4.65 4.11.65.28 1.15.45 1.54.57.65.21 1.24.18 1.71.11.52-.08 1.6-.65 1.83-1.29.23-.63.23-1.17.16-1.29-.07-.11-.25-.18-.52-.32z"
-    />
-
-    <path
-      fill="white"
-      d="M16.01 3.2c-7.05 0-12.78 5.73-12.78 12.78 0 2.25.59 4.36 1.62 6.19L3.2 28.8l6.78-1.62a12.73 12.73 0 0 0 6.03 1.52h.01c7.05 0 12.78-5.73 12.78-12.78S23.06 3.2 16.01 3.2zm0 23.35h-.01a10.55 10.55 0 0 1-5.38-1.47l-.39-.23-4.02.96.97-3.92-.25-.4a10.56 10.56 0 1 1 9.08 5.06z"
-    />
-
-  </svg>
+  <span>
+    💬
+  </span>
 
 </a>
 
 
 
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
 <script src="script.js"></script>
 
 
-
 <script>
+
+/* =========================
+   CHAT
+========================= */
 
 let chatAtivo = false;
 
@@ -464,7 +503,9 @@ function abrirChat() {
     document.getElementById("chat");
 
   if (chat) {
+
     chat.classList.add("aberto");
+
   }
 
 }
@@ -476,7 +517,9 @@ function fecharChat() {
     document.getElementById("chat");
 
   if (chat) {
+
     chat.classList.remove("aberto");
+
   }
 
 }
@@ -528,7 +571,7 @@ function iniciarChat() {
 
     <div class="mensagem empresa">
 
-      Olá, ${escaparHTML(nome)}! 👋
+      Olá, ${nome}! 👋
 
       <br><br>
 
@@ -589,13 +632,24 @@ function enviarChat() {
   mensagens.scrollTop =
     mensagens.scrollHeight;
 
+
+  /*
+    AQUI VAMOS CONECTAR AO SUPABASE.
+
+    A mensagem será salva no banco
+    e aparecerá no painel ADM.
+
+  */
+
 }
 
 
 function teclaChat(event) {
 
   if (event.key === "Enter") {
+
     enviarChat();
+
   }
 
 }
