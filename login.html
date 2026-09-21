@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>NEXT DREAM — Entrar</title>
+
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --verde: #a6ff00;
+      --preto: #050505;
+      --preto2: #0d0d0d;
+      --cinza: #888;
+      --branco: #f5f5f5;
+    }
+
+    body {
+      min-height: 100vh;
+      background: var(--preto);
+      color: var(--branco);
+      font-family: Arial, Helvetica, sans-serif;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 20px;
+    }
+
+    .login-container {
+      width: 100%;
+      max-width: 430px;
+    }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .logo a {
+      text-decoration: none;
+      color: white;
+      font-size: 30px;
+      font-weight: 900;
+      font-style: italic;
+    }
+
+    .logo span {
+      color: var(--verde);
+      font-size: 48px;
+    }
+
+    .logo b {
+      color: var(--verde);
+    }
+
+    .caixa {
+      background: var(--preto2);
+      border: 1px solid #222;
+      padding: 35px;
+    }
+
+    .caixa h1 {
+      font-size: 28px;
+      font-style: italic;
+      margin-bottom: 8px;
+    }
+
+    .subtitulo {
+      color: var(--cinza);
+      font-size: 13px;
+      margin-bottom: 30px;
+    }
+
+    .campo {
+      margin-bottom: 18px;
+    }
+
+    .campo label {
+      display: block;
+      color: #aaa;
+      font-size: 10px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .campo input {
+      width: 100%;
+      padding: 14px;
+
+      background: #080808;
+      border: 1px solid #333;
+
+      color: white;
+      outline: none;
+
+      font-size: 14px;
+    }
+
+    .campo input:focus {
+      border-color: var(--verde);
+    }
+
+    .botao {
+      width: 100%;
+      padding: 15px;
+
+      border: 0;
+      background: var(--verde);
+      color: #000;
+
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 1px;
+
+      cursor: pointer;
+    }
+
+    .botao:hover {
+      box-shadow: 0 0 25px rgba(166, 255, 0, .25);
+    }
+
+    .links {
+      margin-top: 25px;
+      text-align: center;
+    }
+
+    .links a {
+      color: #888;
+      font-size: 11px;
+      text-decoration: none;
+    }
+
+    .links a:hover {
+      color: var(--verde);
+    }
+
+    .separador {
+      height: 1px;
+      background: #222;
+      margin: 25px 0;
+    }
+
+    .criar {
+      text-align: center;
+      color: #777;
+      font-size: 11px;
+    }
+
+    .criar a {
+      color: var(--verde);
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .voltar {
+      display: block;
+      text-align: center;
+      margin-top: 25px;
+
+      color: #666;
+      font-size: 11px;
+      text-decoration: none;
+    }
+
+    .voltar:hover {
+      color: var(--verde);
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <div class="login-container">
+
+
+    <div class="logo">
+
+      <a href="index.html">
+
+        <span>N</span>
+        NEXT <b>DREAM</b>
+
+      </a>
+
+    </div>
+
+
+    <div class="caixa">
+
+      <h1>ENTRAR</h1>
+
+      <p class="subtitulo">
+        Entre na sua conta NEXT DREAM.
+      </p>
+
+
+      <form id="loginForm">
+
+
+        <div class="campo">
+
+          <label>EMAIL</label>
+
+          <input
+            type="email"
+            id="email"
+            placeholder="seu@email.com"
+            required
+          >
+
+        </div>
+
+
+        <div class="campo">
+
+          <label>SENHA</label>
+
+          <input
+            type="password"
+            id="senha"
+            placeholder="Sua senha"
+            required
+          >
+
+        </div>
+
+
+        <button
+          type="submit"
+          class="botao"
+        >
+          ENTRAR →
+        </button>
+
+
+      </form>
+
+
+      <div class="links">
+
+        <a href="#">
+          ESQUECI MINHA SENHA
+        </a>
+
+      </div>
+
+
+      <div class="separador"></div>
+
+
+      <div class="criar">
+
+        Ainda não tem uma conta?
+
+        <a href="#">
+          CRIAR CONTA
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <a
+      href="index.html"
+      class="voltar"
+    >
+      ← VOLTAR PARA A NEXT DREAM
+    </a>
+
+
+  </div>
+
+
+  <script>
+
+    document
+      .getElementById("loginForm")
+      .addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        alert(
+          "O sistema de login será conectado ao Supabase na próxima etapa."
+        );
+
+      });
+
+  </script>
+
+
+</body>
+
+</html>
