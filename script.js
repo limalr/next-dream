@@ -40,6 +40,22 @@ function mostrarProdutos(lista = produtos) {
 
   area.innerHTML = "";
 
+  if (lista.length === 0) {
+
+    area.innerHTML = `
+      <p style="
+        width:100%;
+        text-align:center;
+        color:#777;
+        padding:50px 20px;
+      ">
+        Nenhum produto encontrado.
+      </p>
+    `;
+
+    return;
+  }
+
   lista.forEach(function(produto) {
 
     area.innerHTML += `
@@ -57,13 +73,14 @@ function mostrarProdutos(lista = produtos) {
           </div>
 
           <div class="tamanhos">
-            <button>P</button>
-            <button>M</button>
-            <button>G</button>
-            <button>GG</button>
+            <button type="button">P</button>
+            <button type="button">M</button>
+            <button type="button">G</button>
+            <button type="button">GG</button>
           </div>
 
           <button
+            type="button"
             class="adicionar"
             onclick="adicionarCarrinho(${produto.id})"
           >
@@ -87,6 +104,28 @@ function mostrarProdutos(lista = produtos) {
 
 function filtrar(categoria) {
 
+  const botoes =
+    document.querySelectorAll(".categorias button");
+
+  botoes.forEach(function(botao) {
+
+    botao.classList.remove("ativo");
+
+  });
+
+
+  const botaoSelecionado =
+    document.querySelector(
+      `.categorias button[onclick="filtrar('${categoria}')"]`
+    );
+
+  if (botaoSelecionado) {
+
+    botaoSelecionado.classList.add("ativo");
+
+  }
+
+
   if (categoria === "todos") {
 
     mostrarProdutos(produtos);
@@ -95,11 +134,14 @@ function filtrar(categoria) {
 
   }
 
-  const resultado = produtos.filter(function(produto) {
 
-    return produto.categoria === categoria;
+  const resultado =
+    produtos.filter(function(produto) {
 
-  });
+      return produto.categoria === categoria;
+
+    });
+
 
   mostrarProdutos(resultado);
 
@@ -112,13 +154,16 @@ function filtrar(categoria) {
 
 function adicionarCarrinho(id) {
 
-  const produto = produtos.find(function(item) {
+  const produto =
+    produtos.find(function(item) {
 
-    return item.id === id;
+      return item.id === id;
 
-  });
+    });
+
 
   if (!produto) return;
+
 
   carrinho.push(produto);
 
@@ -128,6 +173,10 @@ function adicionarCarrinho(id) {
 
 }
 
+
+/* =========================
+   ATUALIZAR CARRINHO
+========================= */
 
 function atualizarCarrinho() {
 
@@ -143,7 +192,8 @@ function atualizarCarrinho() {
 
   if (contador) {
 
-    contador.textContent = carrinho.length;
+    contador.textContent =
+      carrinho.length;
 
   }
 
@@ -153,8 +203,11 @@ function atualizarCarrinho() {
 
   if (carrinho.length === 0) {
 
-    itens.innerHTML =
-      "<p style='color:#777'>Seu carrinho está vazio.</p>";
+    itens.innerHTML = `
+      <p style="color:#777">
+        Seu carrinho está vazio.
+      </p>
+    `;
 
     total.textContent = "R$ 0,00";
 
@@ -172,6 +225,7 @@ function atualizarCarrinho() {
 
     valorTotal += produto.preco;
 
+
     itens.innerHTML += `
 
       <div style="
@@ -179,6 +233,7 @@ function atualizarCarrinho() {
         border-bottom:1px solid #222;
         display:flex;
         justify-content:space-between;
+        align-items:flex-start;
         gap:10px;
       ">
 
@@ -192,23 +247,24 @@ function atualizarCarrinho() {
             color:#a6ff00;
             margin-top:5px;
           ">
-
             R$ ${produto.preco
               .toFixed(2)
               .replace(".", ",")}
-
           </div>
 
         </div>
 
         <button
+          type="button"
           onclick="removerCarrinho(${index})"
           style="
             background:none;
             border:0;
             color:#777;
             font-size:22px;
+            cursor:pointer;
           "
+          aria-label="Remover produto"
         >
           ×
         </button>
@@ -229,6 +285,10 @@ function atualizarCarrinho() {
 }
 
 
+/* =========================
+   REMOVER DO CARRINHO
+========================= */
+
 function removerCarrinho(index) {
 
   carrinho.splice(index, 1);
@@ -239,7 +299,7 @@ function removerCarrinho(index) {
 
 
 /* =========================
-   ABRIR / FECHAR CARRINHO
+   ABRIR CARRINHO
 ========================= */
 
 function abrirCarrinho() {
@@ -266,6 +326,10 @@ function abrirCarrinho() {
 
 }
 
+
+/* =========================
+   FECHAR CARRINHO
+========================= */
 
 function fecharCarrinho() {
 
@@ -306,6 +370,7 @@ function finalizar() {
 
   }
 
+
   window.location.href = "login.html";
 
 }
@@ -322,6 +387,20 @@ document.addEventListener(
     mostrarProdutos();
 
     atualizarCarrinho();
+
+
+    /* Marca TODOS como categoria inicial */
+
+    const primeiroBotao =
+      document.querySelector(
+        '.categorias button[onclick="filtrar(\'todos\')"]'
+      );
+
+    if (primeiroBotao) {
+
+      primeiroBotao.classList.add("ativo");
+
+    }
 
   }
 );
