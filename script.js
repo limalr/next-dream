@@ -25,42 +25,44 @@ const produtos = [
   }
 ];
 
+
 let carrinho = [];
 
 
-/* =========================
-   PRODUTOS
-========================= */
+function formatarPreco(valor) {
+  return valor.toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL"
+  });
+}
+
 
 function mostrarProdutos(lista = produtos) {
 
-  const area = document.getElementById("listaProdutos");
+  const container = document.getElementById("listaProdutos");
+  const quantidade = document.getElementById("quantidadeProdutos");
 
-  if (!area) return;
+  if (!container) {
+    return;
+  }
 
-  area.innerHTML = "";
+  quantidade.textContent = `${lista.length} produtos`;
 
   if (lista.length === 0) {
 
-    area.innerHTML = `
-      <p style="
-        width:100%;
-        text-align:center;
-        color:#777;
-        padding:50px 20px;
-      ">
+    container.innerHTML = `
+      <div class="nenhum-produto">
         Nenhum produto encontrado.
-      </p>
+      </div>
     `;
 
     return;
   }
 
-  lista.forEach(function(produto) {
+  container.innerHTML = lista.map(produto => {
 
-    area.innerHTML += `
-
-      <div class="produto">
+    return `
+      <article class="produto">
 
         <div class="produto-imagem"></div>
 
@@ -68,20 +70,16 @@ function mostrarProdutos(lista = produtos) {
 
           <h3>${produto.nome}</h3>
 
-          <div class="preco">
-            R$ ${produto.preco.toFixed(2).replace(".", ",")}
+          <div class="produto-preco">
+            ${formatarPreco(produto.preco)}
           </div>
 
-          <div class="tamanhos">
-            <button type="button">P</button>
-            <button type="button">M</button>
-            <button type="button">G</button>
-            <button type="button">GG</button>
+          <div class="produto-tamanhos">
+            P &nbsp; M &nbsp; G &nbsp; GG
           </div>
 
           <button
-            type="button"
-            class="adicionar"
+            class="btn-produto"
             onclick="adicionarCarrinho(${produto.id})"
           >
             ADICIONAR AO CARRINHO
@@ -89,276 +87,133 @@ function mostrarProdutos(lista = produtos) {
 
         </div>
 
-      </div>
-
+      </article>
     `;
 
-  });
-
+  }).join("");
 }
 
 
-/* =========================
-   FILTROS
-========================= */
+function filtrar(categoria, botao) {
 
-function filtrar(categoria) {
-
-  const botoes =
-    document.querySelectorAll(".categorias button");
-
-  botoes.forEach(function(botao) {
-
-    botao.classList.remove("ativo");
-
-  });
-
-
-  const botaoSelecionado =
-    document.querySelector(
-      `.categorias button[onclick="filtrar('${categoria}')"]`
-    );
-
-  if (botaoSelecionado) {
-
-    botaoSelecionado.classList.add("ativo");
-
-  }
-
-
-  if (categoria === "todos") {
-
-    mostrarProdutos(produtos);
-
-    return;
-
-  }
-
-
-  const resultado =
-    produtos.filter(function(produto) {
-
-      return produto.categoria === categoria;
-
+  document
+    .querySelectorAll(".categorias button")
+    .forEach(button => {
+      button.classList.remove("ativo");
     });
 
+  if (botao) {
+    botao.classList.add("ativo");
+  }
 
-  mostrarProdutos(resultado);
+  if (categoria === "todos") {
+    mostrarProdutos(produtos);
+    return;
+  }
 
+  const filtrados = produtos.filter(produto => {
+    return produto.categoria === categoria;
+  });
+
+  mostrarProdutos(filtrados);
 }
 
-
-/* =========================
-   CARRINHO
-========================= */
 
 function adicionarCarrinho(id) {
 
-  const produto =
-    produtos.find(function(item) {
+  const produto = produtos.find(item => item.id === id);
 
-      return item.id === id;
-
-    });
-
-
-  if (!produto) return;
-
+  if (!produto) {
+    return;
+  }
 
   carrinho.push(produto);
 
   atualizarCarrinho();
-
   abrirCarrinho();
-
 }
 
-
-/* =========================
-   ATUALIZAR CARRINHO
-========================= */
-
-function atualizarCarrinho() {
-
-  const contador =
-    document.getElementById("contador");
-
-  const itens =
-    document.getElementById("itensCarrinho");
-
-  const total =
-    document.getElementById("total");
-
-
-  if (contador) {
-
-    contador.textContent =
-      carrinho.length;
-
-  }
-
-
-  if (!itens || !total) return;
-
-
-  if (carrinho.length === 0) {
-
-    itens.innerHTML = `
-      <p style="color:#777">
-        Seu carrinho está vazio.
-      </p>
-    `;
-
-    total.textContent = "R$ 0,00";
-
-    return;
-
-  }
-
-
-  let valorTotal = 0;
-
-  itens.innerHTML = "";
-
-
-  carrinho.forEach(function(produto, index) {
-
-    valorTotal += produto.preco;
-
-
-    itens.innerHTML += `
-
-      <div style="
-        padding:15px 0;
-        border-bottom:1px solid #222;
-        display:flex;
-        justify-content:space-between;
-        align-items:flex-start;
-        gap:10px;
-      ">
-
-        <div>
-
-          <strong>
-            ${produto.nome}
-          </strong>
-
-          <div style="
-            color:#a6ff00;
-            margin-top:5px;
-          ">
-            R$ ${produto.preco
-              .toFixed(2)
-              .replace(".", ",")}
-          </div>
-
-        </div>
-
-        <button
-          type="button"
-          onclick="removerCarrinho(${index})"
-          style="
-            background:none;
-            border:0;
-            color:#777;
-            font-size:22px;
-            cursor:pointer;
-          "
-          aria-label="Remover produto"
-        >
-          ×
-        </button>
-
-      </div>
-
-    `;
-
-  });
-
-
-  total.textContent =
-    "R$ " +
-    valorTotal
-      .toFixed(2)
-      .replace(".", ",");
-
-}
-
-
-/* =========================
-   REMOVER DO CARRINHO
-========================= */
 
 function removerCarrinho(index) {
 
   carrinho.splice(index, 1);
 
   atualizarCarrinho();
-
 }
 
 
-/* =========================
-   ABRIR CARRINHO
-========================= */
+function atualizarCarrinho() {
+
+  const container = document.getElementById("itensCarrinho");
+  const totalElement = document.getElementById("total");
+  const contador = document.getElementById("contadorCarrinho");
+
+  contador.textContent = carrinho.length;
+
+  if (carrinho.length === 0) {
+
+    container.innerHTML = `
+      <div class="carrinho-vazio">
+        Seu carrinho está vazio.
+      </div>
+    `;
+
+    totalElement.textContent = "R$ 0,00";
+
+    return;
+  }
+
+
+  container.innerHTML = carrinho.map((produto, index) => {
+
+    return `
+      <div class="item-carrinho">
+
+        <div>
+          <h4>${produto.nome}</h4>
+
+          <span class="item-preco">
+            ${formatarPreco(produto.preco)}
+          </span>
+        </div>
+
+        <button
+          class="remover-item"
+          onclick="removerCarrinho(${index})"
+        >
+          ×
+        </button>
+
+      </div>
+    `;
+
+  }).join("");
+
+
+  const total = carrinho.reduce(
+    (soma, produto) => soma + produto.preco,
+    0
+  );
+
+  totalElement.textContent = formatarPreco(total);
+}
+
 
 function abrirCarrinho() {
 
-  const carrinhoBox =
-    document.getElementById("carrinho");
+  const carrinhoElement = document.getElementById("carrinho");
 
-  const fundo =
-    document.getElementById("fundo");
-
-
-  if (carrinhoBox) {
-
-    carrinhoBox.classList.add("aberto");
-
-  }
-
-
-  if (fundo) {
-
-    fundo.classList.add("aberto");
-
-  }
-
+  carrinhoElement.classList.add("aberto");
 }
 
-
-/* =========================
-   FECHAR CARRINHO
-========================= */
 
 function fecharCarrinho() {
 
-  const carrinhoBox =
-    document.getElementById("carrinho");
+  const carrinhoElement = document.getElementById("carrinho");
 
-  const fundo =
-    document.getElementById("fundo");
-
-
-  if (carrinhoBox) {
-
-    carrinhoBox.classList.remove("aberto");
-
-  }
-
-
-  if (fundo) {
-
-    fundo.classList.remove("aberto");
-
-  }
-
+  carrinhoElement.classList.remove("aberto");
 }
 
-
-/* =========================
-   FINALIZAR
-========================= */
 
 function finalizar() {
 
@@ -367,40 +222,16 @@ function finalizar() {
     alert("Seu carrinho está vazio.");
 
     return;
-
   }
 
-
   window.location.href = "login.html";
-
 }
 
 
-/* =========================
-   INICIAR SITE
-========================= */
+document.addEventListener("DOMContentLoaded", () => {
 
-document.addEventListener(
-  "DOMContentLoaded",
-  function() {
+  mostrarProdutos();
 
-    mostrarProdutos();
+  atualizarCarrinho();
 
-    atualizarCarrinho();
-
-
-    /* Marca TODOS como categoria inicial */
-
-    const primeiroBotao =
-      document.querySelector(
-        '.categorias button[onclick="filtrar(\'todos\')"]'
-      );
-
-    if (primeiroBotao) {
-
-      primeiroBotao.classList.add("ativo");
-
-    }
-
-  }
-);
+});
