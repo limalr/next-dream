@@ -23,6 +23,10 @@
 <body>
 
 
+<!-- =========================
+     CABEÇALHO
+========================= -->
+
 <header>
 
   <a
@@ -346,6 +350,119 @@
 
 
 <!-- =========================
+     CHAT
+========================= -->
+
+<button
+  id="botaoChat"
+  onclick="abrirChat()"
+  aria-label="Abrir chat"
+>
+  💬
+</button>
+
+
+<div
+  id="chat"
+  class="chat"
+>
+
+
+  <div class="chat-topo">
+
+    <div>
+
+      <strong>
+        NEXT DREAM
+      </strong>
+
+      <small>
+        Fale conosco
+      </small>
+
+    </div>
+
+
+    <button onclick="fecharChat()">
+      ×
+    </button>
+
+  </div>
+
+
+
+  <div
+    id="chatMensagens"
+    class="chat-mensagens"
+  >
+
+    <div class="mensagem empresa">
+
+      Olá! 👋
+
+      <br><br>
+
+      Como podemos ajudar?
+
+    </div>
+
+  </div>
+
+
+
+  <div
+    id="chatCadastro"
+    class="chat-cadastro"
+  >
+
+    <input
+      type="text"
+      id="chatNome"
+      placeholder="Seu nome"
+    >
+
+
+    <input
+      type="email"
+      id="chatEmail"
+      placeholder="Seu e-mail"
+    >
+
+
+    <button onclick="iniciarChat()">
+      INICIAR CONVERSA
+    </button>
+
+  </div>
+
+
+
+  <div
+    id="chatEnvio"
+    class="chat-envio"
+    style="display:none;"
+  >
+
+    <input
+      type="text"
+      id="chatMensagem"
+      placeholder="Digite sua mensagem..."
+      onkeydown="teclaChat(event)"
+    >
+
+
+    <button onclick="enviarChat()">
+      ➤
+    </button>
+
+  </div>
+
+
+</div>
+
+
+
+<!-- =========================
      WHATSAPP
 ========================= -->
 
@@ -364,9 +481,193 @@
 
 
 
-<!-- JAVASCRIPT -->
+<!-- =========================
+     JAVASCRIPT
+========================= -->
 
 <script src="script.js"></script>
+
+
+<script>
+
+/* =========================
+   CHAT
+========================= */
+
+let chatAtivo = false;
+
+
+function abrirChat() {
+
+  const chat =
+    document.getElementById("chat");
+
+  if (chat) {
+
+    chat.classList.add("aberto");
+
+  }
+
+}
+
+
+function fecharChat() {
+
+  const chat =
+    document.getElementById("chat");
+
+  if (chat) {
+
+    chat.classList.remove("aberto");
+
+  }
+
+}
+
+
+function iniciarChat() {
+
+  const nome =
+    document.getElementById("chatNome").value.trim();
+
+  const email =
+    document.getElementById("chatEmail").value.trim();
+
+
+  if (!nome) {
+
+    alert("Digite seu nome.");
+
+    return;
+
+  }
+
+
+  if (!email || !email.includes("@")) {
+
+    alert("Digite um e-mail válido.");
+
+    return;
+
+  }
+
+
+  chatAtivo = true;
+
+
+  document.getElementById("chatCadastro").style.display =
+    "none";
+
+
+  document.getElementById("chatEnvio").style.display =
+    "flex";
+
+
+  const mensagens =
+    document.getElementById("chatMensagens");
+
+
+  mensagens.innerHTML += `
+
+    <div class="mensagem empresa">
+
+      Olá, ${nome}! 👋
+
+      <br><br>
+
+      Pode mandar sua mensagem.
+      Em breve nossa equipe responderá.
+
+    </div>
+
+  `;
+
+
+  mensagens.scrollTop =
+    mensagens.scrollHeight;
+
+}
+
+
+function enviarChat() {
+
+  if (!chatAtivo) {
+
+    alert("Primeiro inicie a conversa.");
+
+    return;
+
+  }
+
+
+  const campo =
+    document.getElementById("chatMensagem");
+
+
+  const mensagem =
+    campo.value.trim();
+
+
+  if (!mensagem) return;
+
+
+  const mensagens =
+    document.getElementById("chatMensagens");
+
+
+  mensagens.innerHTML += `
+
+    <div class="mensagem cliente">
+
+      ${escaparHTML(mensagem)}
+
+    </div>
+
+  `;
+
+
+  campo.value = "";
+
+
+  mensagens.scrollTop =
+    mensagens.scrollHeight;
+
+
+  /*
+    AQUI VAMOS CONECTAR AO SUPABASE.
+
+    A mensagem será salva no banco
+    e aparecerá no painel ADM.
+
+  */
+
+}
+
+
+function teclaChat(event) {
+
+  if (event.key === "Enter") {
+
+    enviarChat();
+
+  }
+
+}
+
+
+function escaparHTML(texto) {
+
+  const div =
+    document.createElement("div");
+
+  div.textContent =
+    texto;
+
+  return div.innerHTML;
+
+}
+
+</script>
 
 
 </body>
