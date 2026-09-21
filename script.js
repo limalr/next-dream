@@ -25,149 +25,207 @@ const produtos = [
   }
 ];
 
-
 let carrinho = [];
 
 
-function formatarPreco(valor) {
-  return valor.toLocaleString("pt-BR", {
-    style: "currency",
-    currency: "BRL"
-  });
-}
-
+/* =========================
+   PRODUTOS
+========================= */
 
 function mostrarProdutos(lista = produtos) {
 
   const area = document.getElementById("listaProdutos");
 
-  if (!area) {
-    return;
-  }
+  if (!area) return;
 
-  if (lista.length === 0) {
+  area.innerHTML = "";
 
-    area.innerHTML = `
-      <div class="nenhum-produto">
-        NENHUM PRODUTO ENCONTRADO.
-      </div>
-    `;
+  lista.forEach(function(produto) {
 
-    return;
-  }
+    area.innerHTML += `
 
-
-  area.innerHTML = lista.map(produto => {
-
-    return `
-      <article class="produto">
+      <div class="produto">
 
         <div class="produto-imagem"></div>
 
         <div class="produto-info">
 
-          <h3>
-            ${produto.nome}
-          </h3>
+          <h3>${produto.nome}</h3>
 
-          <div class="produto-preco">
-            ${formatarPreco(produto.preco)}
+          <div class="preco">
+            R$ ${produto.preco.toFixed(2).replace(".", ",")}
           </div>
 
-          <div class="produto-tamanhos">
-            TAMANHOS: P / M / G / GG
+          <div class="tamanhos">
+            <button>P</button>
+            <button>M</button>
+            <button>G</button>
+            <button>GG</button>
           </div>
 
           <button
-            class="btn-produto"
-            onclick="adicionarCarrinho(${produto.id})">
+            class="adicionar"
+            onclick="adicionarCarrinho(${produto.id})"
+          >
             ADICIONAR AO CARRINHO
           </button>
 
         </div>
 
-      </article>
+      </div>
+
     `;
 
-  }).join("");
+  });
+
 }
 
 
+/* =========================
+   FILTROS
+========================= */
+
 function filtrar(categoria) {
 
-  const botoes = document.querySelectorAll(".categorias button");
-
-  botoes.forEach(botao => {
-    botao.classList.remove("ativo");
-  });
-
-
-  const botaoSelecionado = [...botoes].find(botao => {
-
-    const texto = botao.textContent
-      .trim()
-      .toLowerCase();
-
-    if (categoria === "todos") {
-      return texto === "todos";
-    }
-
-    if (categoria === "camisetas") {
-      return texto === "camisetas";
-    }
-
-    if (categoria === "agasalhos") {
-      return texto === "agasalhos";
-    }
-
-    if (categoria === "calcas") {
-      return texto === "calças & shorts";
-    }
-
-    if (categoria === "outros") {
-      return texto === "outros";
-    }
-
-    return false;
-  });
-
-
-  if (botaoSelecionado) {
-    botaoSelecionado.classList.add("ativo");
-  }
-
-
   if (categoria === "todos") {
+
     mostrarProdutos(produtos);
+
     return;
+
   }
 
-
-  const produtosFiltrados = produtos.filter(produto => {
+  const resultado = produtos.filter(function(produto) {
 
     return produto.categoria === categoria;
 
   });
 
+  mostrarProdutos(resultado);
 
-  mostrarProdutos(produtosFiltrados);
 }
 
 
+/* =========================
+   CARRINHO
+========================= */
+
 function adicionarCarrinho(id) {
 
-  const produto = produtos.find(item => item.id === id);
+  const produto = produtos.find(function(item) {
 
-  if (!produto) {
-    return;
-  }
+    return item.id === id;
 
+  });
+
+  if (!produto) return;
 
   carrinho.push(produto);
 
   atualizarCarrinho();
 
   abrirCarrinho();
+
+}
+
+
+function atualizarCarrinho() {
+
+  const contador =
+    document.getElementById("contador");
+
+  const itens =
+    document.getElementById("itensCarrinho");
+
+  const total =
+    document.getElementById("total");
+
+
+  if (contador) {
+
+    contador.textContent = carrinho.length;
+
+  }
+
+
+  if (!itens || !total) return;
+
+
+  if (carrinho.length === 0) {
+
+    itens.innerHTML =
+      "<p style='color:#777'>Seu carrinho está vazio.</p>";
+
+    total.textContent = "R$ 0,00";
+
+    return;
+
+  }
+
+
+  let valorTotal = 0;
+
+  itens.innerHTML = "";
+
+
+  carrinho.forEach(function(produto, index) {
+
+    valorTotal += produto.preco;
+
+    itens.innerHTML += `
+
+      <div style="
+        padding:15px 0;
+        border-bottom:1px solid #222;
+        display:flex;
+        justify-content:space-between;
+        gap:10px;
+      ">
+
+        <div>
+
+          <strong>
+            ${produto.nome}
+          </strong>
+
+          <div style="
+            color:#a6ff00;
+            margin-top:5px;
+          ">
+
+            R$ ${produto.preco
+              .toFixed(2)
+              .replace(".", ",")}
+
+          </div>
+
+        </div>
+
+        <button
+          onclick="removerCarrinho(${index})"
+          style="
+            background:none;
+            border:0;
+            color:#777;
+            font-size:22px;
+          "
+        >
+          ×
+        </button>
+
+      </div>
+
+    `;
+
+  });
+
+
+  total.textContent =
+    "R$ " +
+    valorTotal
+      .toFixed(2)
+      .replace(".", ",");
+
 }
 
 
@@ -176,101 +234,67 @@ function removerCarrinho(index) {
   carrinho.splice(index, 1);
 
   atualizarCarrinho();
+
 }
 
 
-function atualizarCarrinho() {
-
-  const area = document.getElementById("itensCarrinho");
-
-  const total = document.getElementById("total");
-
-  const contador = document.getElementById("contadorCarrinho");
-
-
-  if (!area || !total) {
-    return;
-  }
-
-
-  if (contador) {
-    contador.textContent = carrinho.length;
-  }
-
-
-  if (carrinho.length === 0) {
-
-    area.innerHTML = `
-      <div class="carrinho-vazio">
-        SEU CARRINHO ESTÁ VAZIO.
-      </div>
-    `;
-
-    total.textContent = "R$ 0,00";
-
-    return;
-  }
-
-
-  area.innerHTML = carrinho.map((produto, index) => {
-
-    return `
-      <div class="item-carrinho">
-
-        <div>
-
-          <h4>
-            ${produto.nome}
-          </h4>
-
-          <div class="item-preco">
-            ${formatarPreco(produto.preco)}
-          </div>
-
-        </div>
-
-        <button
-          class="remover-item"
-          onclick="removerCarrinho(${index})"
-          aria-label="Remover produto">
-          ×
-        </button>
-
-      </div>
-    `;
-
-  }).join("");
-
-
-  const valorTotal = carrinho.reduce(
-    (total, produto) => total + produto.preco,
-    0
-  );
-
-
-  total.textContent = formatarPreco(valorTotal);
-}
-
+/* =========================
+   ABRIR / FECHAR CARRINHO
+========================= */
 
 function abrirCarrinho() {
 
-  const carrinhoElemento = document.getElementById("carrinho");
+  const carrinhoBox =
+    document.getElementById("carrinho");
 
-  if (carrinhoElemento) {
-    carrinhoElemento.classList.add("aberto");
+  const fundo =
+    document.getElementById("fundo");
+
+
+  if (carrinhoBox) {
+
+    carrinhoBox.classList.add("aberto");
+
   }
+
+
+  if (fundo) {
+
+    fundo.classList.add("aberto");
+
+  }
+
 }
 
 
 function fecharCarrinho() {
 
-  const carrinhoElemento = document.getElementById("carrinho");
+  const carrinhoBox =
+    document.getElementById("carrinho");
 
-  if (carrinhoElemento) {
-    carrinhoElemento.classList.remove("aberto");
+  const fundo =
+    document.getElementById("fundo");
+
+
+  if (carrinhoBox) {
+
+    carrinhoBox.classList.remove("aberto");
+
   }
+
+
+  if (fundo) {
+
+    fundo.classList.remove("aberto");
+
+  }
+
 }
 
+
+/* =========================
+   FINALIZAR
+========================= */
 
 function finalizar() {
 
@@ -279,17 +303,25 @@ function finalizar() {
     alert("Seu carrinho está vazio.");
 
     return;
+
   }
 
-
   window.location.href = "login.html";
+
 }
 
 
-document.addEventListener("DOMContentLoaded", () => {
+/* =========================
+   INICIAR SITE
+========================= */
 
-  mostrarProdutos();
+document.addEventListener(
+  "DOMContentLoaded",
+  function() {
 
-  atualizarCarrinho();
+    mostrarProdutos();
 
-});
+    atualizarCarrinho();
+
+  }
+);
