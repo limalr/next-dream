@@ -3,193 +3,242 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>NEXT DREAM</title>
+
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<header>
-  <div class="header-container">
+  <!-- HEADER -->
+  <header>
+    <div class="header-container">
 
-    <a href="index.html" class="logo">
-      <span>N</span>EXT <b>DREAM</b>
-    </a>
-
-    <nav>
-      <a href="#inicio">INÍCIO</a>
-      <a href="#produtos">PRODUTOS</a>
-      <a href="#novidades">NOVIDADES</a>
-    </nav>
-
-    <div class="header-actions">
-      <a href="login.html" class="entrar">ENTRAR</a>
-      <button class="cart-btn" onclick="abrirCarrinho()">
-        🛒 <span id="contadorCarrinho">0</span>
-      </button>
-    </div>
-
-  </div>
-</header>
-
-
-<main>
-
-  <section class="hero" id="inicio">
-    <div class="hero-content">
-
-      <div class="hero-tag">
-        ESTILO • ATITUDE • MOVIMENTO
-      </div>
-
-      <h1>
-        NEXT <span>DREAM</span>
-      </h1>
-
-      <h2>
-        YOUR NEXT MOVE.
-      </h2>
-
-      <p>
-        Roupas para quem não espera o próximo nível.
-        Vai atrás.
-      </p>
-
-      <a href="#produtos" class="btn-principal">
-        COMPRAR AGORA →
+      <a href="index.html" class="logo">
+        <span>N</span> NEXT <b>DREAM</b>
       </a>
 
-    </div>
-  </section>
+      <nav>
+        <a href="#inicio">INÍCIO</a>
+        <a href="#produtos">PRODUTOS</a>
+        <a href="#novidades">NOVIDADES</a>
+      </nav>
 
+      <div class="header-actions">
 
-  <section class="categorias">
+        <a href="login.html" class="entrar">
+          ENTRAR
+        </a>
 
-    <button class="ativo" onclick="filtrar('todos', this)">
-      TODOS
-    </button>
+        <a href="admin-login.html" class="adm">
+          🔒 ADM
+        </a>
 
-    <button onclick="filtrar('camisetas', this)">
-      CAMISETAS
-    </button>
+        <button class="cart-btn" onclick="abrirCarrinho()">
+          🛒 <span id="contadorCarrinho">0</span>
+        </button>
 
-    <button onclick="filtrar('agasalhos', this)">
-      AGASALHOS
-    </button>
-
-    <button onclick="filtrar('calcas', this)">
-      CALÇAS & SHORTS
-    </button>
-
-    <button onclick="filtrar('outros', this)">
-      OUTROS
-    </button>
-
-  </section>
-
-
-  <section class="produtos" id="produtos">
-
-    <div class="produtos-titulo">
-      <div>
-        <span>COLEÇÃO</span>
-        <h2>DESTAQUES</h2>
       </div>
 
-      <span id="quantidadeProdutos"></span>
+    </div>
+  </header>
+
+
+  <!-- HERO -->
+  <main id="inicio">
+
+    <section class="hero">
+
+      <div class="hero-content">
+
+        <div class="hero-tag">
+          ESTILO • ATITUDE • MOVIMENTO
+        </div>
+
+        <h1>
+          NEXT<br>
+          <span>DREAM</span>
+        </h1>
+
+        <h2>
+          YOUR NEXT MOVE.
+        </h2>
+
+        <p>
+          Roupas para quem não espera o próximo nível.
+          Vai atrás.
+        </p>
+
+        <a href="#produtos" class="btn-principal">
+          COMPRAR AGORA →
+        </a>
+
+      </div>
+
+    </section>
+
+
+    <!-- CATEGORIAS -->
+    <section class="categorias">
+
+      <button class="ativo" onclick="filtrar('todos')">
+        TODOS
+      </button>
+
+      <button onclick="filtrar('camisetas')">
+        CAMISETAS
+      </button>
+
+      <button onclick="filtrar('agasalhos')">
+        AGASALHOS
+      </button>
+
+      <button onclick="filtrar('calcas')">
+        CALÇAS & SHORTS
+      </button>
+
+      <button onclick="filtrar('outros')">
+        OUTROS
+      </button>
+
+    </section>
+
+
+    <!-- PRODUTOS -->
+    <section class="produtos" id="produtos">
+
+      <div class="produtos-titulo">
+
+        <h2>
+          PRODUTOS
+        </h2>
+
+        <span>
+          NEXT DREAM
+        </span>
+
+      </div>
+
+      <div id="listaProdutos"></div>
+
+    </section>
+
+
+    <!-- MANIFESTO -->
+    <section class="manifesto" id="novidades">
+
+      <small>
+        NEXT DREAM
+      </small>
+
+      <h2>
+        MAIS QUE ROUPA.<br>
+        É MOVIMENTO.
+      </h2>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer>
+
+    <div class="footer-container">
+
+      <div class="footer-logo">
+        <span>N</span> NEXT DREAM
+      </div>
+
+      <div class="footer-links">
+
+        <a href="#produtos">
+          PRODUTOS
+        </a>
+
+        <a href="login.html">
+          MINHA CONTA
+        </a>
+
+        <a href="admin-login.html">
+          ADMINISTRAÇÃO
+        </a>
+
+      </div>
+
     </div>
 
-    <div id="listaProdutos"></div>
-
-  </section>
-
-
-  <section class="manifesto" id="novidades">
-
-    <small>NEXT DREAM</small>
-
-    <h2>
-      MAIS QUE ROUPA.<br>
-      É MOVIMENTO.
-    </h2>
-
-  </section>
-
-</main>
-
-
-<footer>
-
-  <div class="footer-container">
-
-    <div class="footer-logo">
-      <span>N</span>EXT DREAM
+    <div class="footer-bottom">
+      © 2026 NEXT DREAM. Todos os direitos reservados.
     </div>
 
-    <div class="footer-links">
-      <a href="#inicio">INÍCIO</a>
-      <a href="#produtos">PRODUTOS</a>
-      <a href="login.html">ENTRAR</a>
-    </div>
-
-  </div>
-
-  <div class="footer-bottom">
-    © 2026 NEXT DREAM. Todos os direitos reservados.
-  </div>
-
-</footer>
+  </footer>
 
 
-<!-- CARRINHO -->
+  <!-- CARRINHO -->
+  <div class="carrinho-overlay" id="carrinho">
 
-<div class="carrinho-overlay" id="carrinho">
+    <div class="carrinho">
 
-  <div class="carrinho">
+      <div class="carrinho-header">
 
-    <div class="carrinho-header">
+        <h2>
+          SEU CARRINHO
+        </h2>
 
-      <h2>SEU CARRINHO</h2>
+        <button
+          class="fechar-carrinho"
+          onclick="fecharCarrinho()">
+          ×
+        </button>
 
-      <button class="fechar-carrinho" onclick="fecharCarrinho()">
-        ×
+      </div>
+
+      <div id="itensCarrinho"></div>
+
+      <div class="carrinho-total">
+
+        <span>
+          TOTAL
+        </span>
+
+        <span id="total">
+          R$ 0,00
+        </span>
+
+      </div>
+
+      <button
+        class="btn-finalizar"
+        onclick="finalizar()">
+        FINALIZAR PEDIDO
       </button>
 
     </div>
 
-    <div id="itensCarrinho"></div>
-
-    <div class="carrinho-total">
-      <span>TOTAL</span>
-      <span id="total">R$ 0,00</span>
-    </div>
-
-    <button class="btn-finalizar" onclick="finalizar()">
-      FINALIZAR COMPRA →
-    </button>
-
   </div>
 
-</div>
+
+  <!-- WHATSAPP -->
+  <a
+    href="https://wa.me/5545984164185?text=Ol%C3%A1!%20Vim%20pelo%20site%20NEXT%20DREAM%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es."
+    class="whatsapp-next"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Falar pelo WhatsApp">
+
+    <svg
+      viewBox="0 0 32 32"
+      xmlns="http://www.w3.org/2000/svg">
+
+      <path d="M16.01 3C8.83 3 3 8.82 3 16c0 2.3.6 4.54 1.74 6.5L3 29l6.68-1.7A12.94 12.94 0 0 0 16 29c7.18 0 13-5.82 13-13S23.19 3 16.01 3zm0 23.7c-2.08 0-4.12-.56-5.9-1.63l-.42-.25-3.96 1.01 1.03-3.86-.27-.43A10.68 10.68 0 1 1 16.01 26.7zm5.86-7.99c-.32-.16-1.9-.94-2.2-1.05-.29-.11-.5-.16-.71.16-.21.31-.81 1.05-1 1.27-.18.21-.37.24-.69.08-.32-.16-1.34-.49-2.55-1.57-.94-.84-1.57-1.87-1.75-2.18-.18-.31-.02-.48.14-.64.14-.14.32-.37.48-.55.16-.18.21-.31.32-.53.11-.21.05-.4-.03-.56-.08-.16-.71-1.71-.98-2.34-.26-.62-.52-.54-.71-.55h-.61c-.21 0-.55.08-.84.4-.29.31-1.1 1.08-1.1 2.63s1.13 3.05 1.29 3.26c.16.21 2.22 3.39 5.38 4.75.75.32 1.33.51 1.78.65.75.24 1.43.21 1.97.13.6-.09 1.9-.78 2.17-1.53.27-.75.27-1.39.19-1.53-.08-.13-.29-.21-.61-.37z"/>
+    </svg>
+
+  </a>
 
 
-<!-- WHATSAPP -->
-
-<a
-  href="https://wa.me/5545984164185?text=Ol%C3%A1!%20Vim%20pelo%20site%20NEXT%20DREAM%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es."
-  class="whatsapp-next"
-  target="_blank"
-  aria-label="Falar pelo WhatsApp"
->
-
-  <svg viewBox="0 0 32 32">
-    <path d="M16.01 3C8.83 3 3 8.83 3 16c0 2.29.6 4.44 1.66 6.3L3 29l6.88-1.61A12.94 12.94 0 0 0 16.01 29C23.18 29 29 23.17 29 16S23.18 3 16.01 3zm0 23.7c-2.02 0-3.9-.55-5.51-1.5l-.39-.23-4.08.96.98-3.98-.25-.41A10.7 10.7 0 0 1 5.3 16c0-5.91 4.81-10.7 10.71-10.7S26.7 10.09 26.7 16s-4.8 10.7-10.69 10.7zm5.87-8.03c-.32-.16-1.91-.94-2.2-1.05-.3-.11-.51-.16-.73.16-.21.32-.83 1.05-1.02 1.27-.19.21-.38.24-.7.08-.32-.16-1.36-.5-2.59-1.6-.96-.86-1.61-1.92-1.8-2.24-.19-.32-.02-.49.14-.65.14-.14.32-.38.48-.57.16-.19.21-.32.32-.54.11-.21.05-.4-.03-.57-.08-.16-.73-1.75-1-2.39-.26-.62-.53-.54-.73-.55h-.62c-.21 0-.57.08-.86.4-.3.32-1.13 1.1-1.13 2.68s1.16 3.11 1.32 3.33c.16.21 2.28 3.48 5.53 4.88.77.33 1.37.53 1.84.68.77.25 1.47.21 2.02.13.62-.09 1.91-.78 2.18-1.54.27-.76.27-1.41.19-1.54-.08-.14-.29-.22-.62-.38z"/>
-  </svg>
-
-</a>
-
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 
 </body>
 </html>
